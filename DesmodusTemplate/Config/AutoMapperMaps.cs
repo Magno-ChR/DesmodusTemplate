@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DesmodusTemplate.DTOs.Persona;
-using DesmodusTemplate.Entities.Autores;
+using DesmodusTemplate.Entities.Artec;
 
 namespace DesmodusTemplate.Config
 {

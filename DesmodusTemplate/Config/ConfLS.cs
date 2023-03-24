@@ -1,10 +1,9 @@
-﻿using DesmodusTemplate.Entities.Autores;
-using DesmodusTemplate.LogicServices;
+﻿using DesmodusTemplate.LogicServices;
 using System;
 
 namespace DesmodusTemplate.Config
 {
-    public static class ConfRN
+    public static class ConfLS
     {
         public static IServiceCollection AddConfLS(this IServiceCollection services)
         {
@@ -14,7 +13,6 @@ namespace DesmodusTemplate.Config
         }
         private static IServiceCollection RegisterLogicServices(this IServiceCollection services)
         {
-            // here come our Dependency Inyection
             services.AddTransient<PersonaLS>();
             return services;
 

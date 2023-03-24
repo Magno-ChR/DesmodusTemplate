@@ -14,11 +14,11 @@ namespace DesmodusTemplate.Controllers
             this.personaLS = personaLS;
         }
         [HttpGet]
-        public ActionResult<List<DTO_Persona>> GetListPersonas()
+        public async Task<ActionResult<List<DTO_Persona>>> GetListPersonas()
         {
             try
             {
-                var data = personaLS.GetListPersonas();
+                var data = await personaLS.GetListPersonas();
 
                 if (data == null)
                 {

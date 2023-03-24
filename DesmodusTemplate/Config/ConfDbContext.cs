@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DesmodusTemplate.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DesmodusTemplate.Config
 {
@@ -6,7 +7,7 @@ namespace DesmodusTemplate.Config
     {
         public static IServiceCollection AddConfContext(this IServiceCollection services,ConfigurationManager configuration)
         {
-            //services.AddDb<UpdsLogContext>(configuration, "Log");
+            services.AddDb<ArtecContext>(configuration, "ARTEC");
             return services;
         }
         private static IServiceCollection AddDb<T>(this IServiceCollection services, ConfigurationManager configuration, string connectionString = "Default")
