@@ -17,9 +17,17 @@ public partial class Persona
 
     public DateTime FechaNacimiento { get; set; }
 
-    public bool? Estado { get; set; }
+    public string CorreoPersonal { get; set; }
 
-    public int IdPais { get; set; }
+    public string Celular { get; set; }
 
-    public virtual Pai IdPaisNavigation { get; set; }
+    public string DireccionResidencia { get; set; }
+
+    public int? IdPais { get; set; }
+
+    public int? IdEstado { get; set; }
+
+    public virtual Estado IdEstadoNavigation { get; set; }
+
+    public virtual Pais IdPaisNavigation { get; set; }
 }

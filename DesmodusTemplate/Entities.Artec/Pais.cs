@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DesmodusTemplate.Entities.Artec;
 
-public partial class Pai
+public partial class Pais
 {
     public int IdPais { get; set; }
 
@@ -11,5 +11,7 @@ public partial class Pai
 
     public string NombreCorto { get; set; }
 
-    public virtual ICollection<Persona> Personas { get; } = new List<Persona>();
+    public string Gentilicio { get; set; }
+
+    public virtual ICollection<Persona> Persona { get; } = new List<Persona>();
 }

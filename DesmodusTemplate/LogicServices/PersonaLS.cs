@@ -7,10 +7,10 @@ namespace DesmodusTemplate.LogicServices
 {
     public class PersonaLS
     {
-        private readonly ArtecContext context;
+        private readonly HomeContext context;
         private readonly IMapper mapper;
 
-        public PersonaLS(ArtecContext context, IMapper mapper)
+        public PersonaLS(HomeContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
@@ -18,7 +18,7 @@ namespace DesmodusTemplate.LogicServices
 
         public async Task<List<DTO_Persona>> GetListPersonas()
         {
-            var data = await context.Personas.ToListAsync();
+            var data = await context.Persona.ToListAsync();
             //List<Persona> data = new List<Persona>();
             //data.Add(new Persona 
             //{

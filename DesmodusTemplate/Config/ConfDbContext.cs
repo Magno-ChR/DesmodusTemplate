@@ -7,7 +7,7 @@ namespace DesmodusTemplate.Config
     {
         public static IServiceCollection AddConfContext(this IServiceCollection services,ConfigurationManager configuration)
         {
-            services.AddDb<ArtecContext>(configuration, "ARTEC");
+            services.AddDb<HomeContext>(configuration, "ARTEC");
             return services;
         }
         private static IServiceCollection AddDb<T>(this IServiceCollection services, ConfigurationManager configuration, string connectionString = "Default")
