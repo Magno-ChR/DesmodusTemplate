@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace DesmodusTemplate.Entities.Artec;
 
-public partial class Estado
+public partial class Rol
 {
-    public int IdEstado { get; set; }
+    public int IdRol { get; set; }
 
     public string Nombre { get; set; }
 
     public string Descripcion { get; set; }
 
-    public virtual ICollection<Persona> Persona { get; } = new List<Persona>();
+    public int IdEstado { get; set; }
 
-    public virtual ICollection<Rol> Rol { get; } = new List<Rol>();
+    public virtual Estado IdEstadoNavigation { get; set; }
 
     public virtual ICollection<Usuario> Usuario { get; } = new List<Usuario>();
 }

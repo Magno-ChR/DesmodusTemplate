@@ -1,11 +1,13 @@
-﻿using DesmodusTemplate.DTOs.Persona;
+﻿using DesmodusTemplate.DTOs;
 using DesmodusTemplate.LogicServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesmodusTemplate.Controllers
 {
     [ApiController] //Validaciones automaticas respecto a los datos recividos
     [Route("api/[controller]")]
+    [Authorize]
     public class PersonasController : ControllerBase
     {
         private readonly PersonaLS personaLS;
@@ -14,7 +16,7 @@ namespace DesmodusTemplate.Controllers
             this.personaLS = personaLS;
         }
         [HttpGet]
-        public async Task<ActionResult<List<DTO_Persona>>> GetListPersonas()
+        public async Task<ActionResult<List<PersonaDto>>> GetListPersonas()
         {
             try
             {

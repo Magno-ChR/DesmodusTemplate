@@ -22,6 +22,10 @@ public partial class HomeContext : DbContext
 
     public virtual DbSet<Persona> Persona { get; set; }
 
+    public virtual DbSet<Rol> Rol { get; set; }
+
+    public virtual DbSet<Usuario> Usuario { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=HOME;Integrated Security=True; TrustServerCertificate=True");
@@ -98,6 +102,51 @@ public partial class HomeContext : DbContext
             entity.HasOne(d => d.IdPaisNavigation).WithMany(p => p.Persona)
                 .HasForeignKey(d => d.IdPais)
                 .HasConstraintName("fk_Persona_Pais");
+        });
+
+        modelBuilder.Entity<Rol>(entity =>
+        {
+            entity.HasKey(e => e.IdRol).HasName("Pk_IdRol");
+
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(80)
+                .IsUnicode(false);
+            entity.Property(e => e.Nombre)
+                .IsRequired()
+                .HasMaxLength(60)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.IdEstadoNavigation).WithMany(p => p.Rol)
+                .HasForeignKey(d => d.IdEstado)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_Rol_Estado");
+        });
+
+        modelBuilder.Entity<Usuario>(entity =>
+        {
+            entity.HasKey(e => e.IdUsuario).HasName("Pk_IdUsuario");
+
+            entity.Property(e => e.Clave).IsRequired();
+            entity.Property(e => e.Correo)
+                .IsRequired()
+                .HasMaxLength(60)
+                .IsUnicode(false);
+            entity.Property(e => e.Salt).IsRequired();
+
+            entity.HasOne(d => d.IdEstadoNavigation).WithMany(p => p.Usuario)
+                .HasForeignKey(d => d.IdEstado)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_Usuario_Estado");
+
+            entity.HasOne(d => d.IdPersonaNavigation).WithMany(p => p.Usuario)
+                .HasForeignKey(d => d.IdPersona)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_Usuario_Persona");
+
+            entity.HasOne(d => d.IdRolNavigation).WithMany(p => p.Usuario)
+                .HasForeignKey(d => d.IdRol)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_Usuario_Rol");
         });
 
         OnModelCreatingPartial(modelBuilder);

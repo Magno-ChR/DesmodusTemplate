@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DesmodusTemplate.DTOs.Persona;
+using DesmodusTemplate.DTOs;
 using DesmodusTemplate.Entities.Artec;
 
 namespace DesmodusTemplate.Config
@@ -7,8 +7,11 @@ namespace DesmodusTemplate.Config
     public class AutoMapperMaps : Profile
     {
         public AutoMapperMaps() {
-            CreateMap<Persona, DTO_Persona>();
-            CreateMap<DTO_Persona, Persona>();
+            CreateMap<Persona, PersonaDto>();
+            CreateMap<PersonaDto, Persona>();
+
+            CreateMap<Usuario, UsuarioDto>();
+            CreateMap<UsuarioEditDto, Usuario>();
         }
     }
 }

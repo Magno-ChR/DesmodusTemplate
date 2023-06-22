@@ -1,6 +1,6 @@
-﻿namespace DesmodusTemplate.DTOs.Persona
+﻿namespace DesmodusTemplate.DTOs
 {
-    public class DTO_Persona
+    public class PersonaDto
     {
         public int IdPersona { get; set; }
 
@@ -13,5 +13,15 @@
         public string NroDocumento { get; set; }
 
         public DateTime FechaNacimiento { get; set; }
+
+        public string CorreoPersonal { get; set; }
+
+        public string Celular { get; set; }
+
+        public string DireccionResidencia { get; set; }
+
+        public int? IdPais { get; set; }
+
+        public int? IdEstado { get; set; }
     }
 }

@@ -30,4 +30,6 @@ public partial class Persona
     public virtual Estado IdEstadoNavigation { get; set; }
 
     public virtual Pais IdPaisNavigation { get; set; }
+
+    public virtual ICollection<Usuario> Usuario { get; } = new List<Usuario>();
 }

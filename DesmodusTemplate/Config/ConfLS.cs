@@ -14,6 +14,7 @@ namespace DesmodusTemplate.Config
         private static IServiceCollection RegisterLogicServices(this IServiceCollection services)
         {
             services.AddTransient<PersonaLS>();
+            services.AddTransient<AuthLS>();
             return services;
 
         }
