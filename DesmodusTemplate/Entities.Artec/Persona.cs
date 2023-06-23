@@ -27,6 +27,8 @@ public partial class Persona
 
     public int? IdEstado { get; set; }
 
+    public bool? Sexo { get; set; }
+
     public virtual Estado IdEstadoNavigation { get; set; }
 
     public virtual Pais IdPaisNavigation { get; set; }

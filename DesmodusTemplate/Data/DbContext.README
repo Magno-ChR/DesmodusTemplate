@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext -Connection "Data Source=localhost\SQLEXPRESS;Initial Catalog=HOME;Integrated Security=True; TrustServerCertificate=True" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities.Artec -NoPluralize -f

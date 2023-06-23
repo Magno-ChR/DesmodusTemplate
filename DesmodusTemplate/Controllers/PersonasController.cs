@@ -16,6 +16,7 @@ namespace DesmodusTemplate.Controllers
             this.personaLS = personaLS;
         }
         [HttpGet]
+        //[AllowAnonymous]
         public async Task<ActionResult<List<PersonaDto>>> GetListPersonas()
         {
             try

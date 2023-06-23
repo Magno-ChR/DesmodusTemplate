@@ -23,5 +23,7 @@
         public int? IdPais { get; set; }
 
         public int? IdEstado { get; set; }
+
+        public bool? Sexo { get; set; }
     }
 }

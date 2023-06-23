@@ -94,6 +94,9 @@ public partial class HomeContext : DbContext
             entity.Property(e => e.SegundoApellido)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.Sexo)
+                .IsRequired()
+                .HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.IdEstadoNavigation).WithMany(p => p.Persona)
                 .HasForeignKey(d => d.IdEstado)

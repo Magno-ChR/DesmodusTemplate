@@ -39,7 +39,10 @@ namespace DesmodusTemplate.LogicServices
         }
         public async Task<ObjectResult> login(UsuarioLoginDto data)
         {
-            var entidad = await  context.Usuario.FirstOrDefaultAsync(x => x.Correo == data.Correo);
+            var entidad = await  context.Usuario
+                .Include(x => x.IdPersonaNavigation)
+                .Include(x => x.IdRolNavigation)
+                .FirstOrDefaultAsync(x => x.Correo == data.Correo);
             if (entidad == null)
                 return new ObjectResult("Usuario no encontrado.") { StatusCode = StatusCodes.Status400BadRequest };
             else
@@ -77,9 +80,10 @@ namespace DesmodusTemplate.LogicServices
         {
             List<Claim> clains = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.IdPersona.ToString()),
+                new Claim(ClaimTypes.Name, user.IdPersonaNavigation.Nombre + " " + user.IdPersonaNavigation.PrimerApellido + " " + user.IdPersonaNavigation.SegundoApellido),
+                new Claim(ClaimTypes.Gender, user.IdPersonaNavigation.Sexo == false ? "Masculino" : "Femenino"),
                 new Claim(ClaimTypes.Email, user.Correo),
-                new Claim(ClaimTypes.Role, user.IdRol.ToString())
+                new Claim(ClaimTypes.Role, user.IdRolNavigation.Nombre)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("jwtSettings:secretKey").Value));
