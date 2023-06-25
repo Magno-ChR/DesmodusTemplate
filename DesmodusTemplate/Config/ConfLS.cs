@@ -15,6 +15,7 @@ namespace DesmodusTemplate.Config
         {
             services.AddTransient<PersonaLS>();
             services.AddTransient<AuthLS>();
+            services.AddTransient<UsuarioLS>();
             return services;
 
         }

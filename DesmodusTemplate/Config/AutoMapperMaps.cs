@@ -11,6 +11,7 @@ namespace DesmodusTemplate.Config
             CreateMap<PersonaDto, Persona>();
 
             CreateMap<Usuario, UsuarioDto>();
+            CreateMap<Usuario, UsuarioLoginDto>();
             CreateMap<UsuarioEditDto, Usuario>();
         }
     }

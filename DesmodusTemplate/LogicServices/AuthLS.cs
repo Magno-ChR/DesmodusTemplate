@@ -80,9 +80,12 @@ namespace DesmodusTemplate.LogicServices
         {
             List<Claim> clains = new List<Claim>
             {
+                new Claim("ID", user.IdUsuario.ToString()),
+                new Claim("Documento", user.IdPersonaNavigation.NroDocumento),
                 new Claim(ClaimTypes.Name, user.IdPersonaNavigation.Nombre + " " + user.IdPersonaNavigation.PrimerApellido + " " + user.IdPersonaNavigation.SegundoApellido),
                 new Claim(ClaimTypes.Gender, user.IdPersonaNavigation.Sexo == false ? "Masculino" : "Femenino"),
                 new Claim(ClaimTypes.Email, user.Correo),
+                new Claim("IdRol", user.IdRolNavigation.IdRol.ToString()),
                 new Claim(ClaimTypes.Role, user.IdRolNavigation.Nombre)
             };
 
