@@ -49,7 +49,7 @@ namespace DesmodusTemplate.LogicServices
             {
                 if(VerifyPassword(data.Clave, entidad.Clave, entidad.Salt))
                 {
-                    return new ObjectResult(CreateToken(entidad)) { StatusCode = StatusCodes.Status200OK };
+                    return new OkObjectResult(CreateToken(entidad));
                 }
                 else
                     return new ObjectResult("Contraseña incorrecta.") { StatusCode = StatusCodes.Status400BadRequest };
