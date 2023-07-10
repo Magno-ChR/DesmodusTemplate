@@ -24,7 +24,11 @@ namespace DesmodusTemplate.Controllers
         {
             this.authLS = authLS;
         }
-
+        /// <summary>
+        /// Registra de datos de acceso para una persona
+        /// </summary>
+        /// <param name="data">Un objeto del tipo UsuarioEditDto con los datos del usuario</param>
+        /// <returns>Retorna un objeto del tipo UsuarioEditDto</returns>
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UsuarioEditDto data)
         {
@@ -37,7 +41,11 @@ namespace DesmodusTemplate.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        /// <summary>
+        /// Iniciar sesión
+        /// </summary>
+        /// <param name="data"> Correo y Contraseña del usuario</param>
+        /// <returns>Retorna el JWT del usuario</returns>
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UsuarioLoginDto data)
         {
