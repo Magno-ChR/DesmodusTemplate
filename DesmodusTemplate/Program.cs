@@ -36,6 +36,9 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddSwaggerGen(options =>
 {
+
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
+
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
@@ -66,7 +69,7 @@ builder.Services.AddSwaggerGen(options =>
         Type = SecuritySchemeType.ApiKey
     });
 
-    options.OperationFilter<SecurityRequirementsOperationFilter>();
+    
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
