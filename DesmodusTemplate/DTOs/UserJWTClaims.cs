@@ -9,5 +9,6 @@
         public string Email { get; set; }
         public string IdRol { get; set; }
         public string Rol { get; set; }
+        public string Expiracion { get; set; }
     }
 }

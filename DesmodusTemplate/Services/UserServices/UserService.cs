@@ -24,6 +24,7 @@ namespace DesmodusTemplate.Services.UserServices
                 UserClaims.Email = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Email);
                 UserClaims.IdRol = httpContextAccessor.HttpContext.User.FindFirstValue("IdRol");
                 UserClaims.Rol = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Role);
+                UserClaims.Expiracion = httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Expiration);
             }
             return UserClaims;
         }
