@@ -7,7 +7,7 @@ namespace DesmodusTemplate.DTOs
     {
         public int StatusCode { get; set; } = 200;
         public string Message { get; set; } = "Ok";
-        public T? Value { get; set; }
+        public T? Data { get; set; }
         public bool IsSuccess
         {
             get
@@ -38,7 +38,7 @@ namespace DesmodusTemplate.DTOs
             }
             else
             {
-                resp = new Respuesta<T> { Message = message, StatusCode = statusCode, Value = value };
+                resp = new Respuesta<T> { Message = message, StatusCode = statusCode, Data = value };
                 return new ObjectResult(resp)
                 {
                     Value = resp,

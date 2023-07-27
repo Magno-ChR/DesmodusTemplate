@@ -15,6 +15,7 @@ namespace DesmodusTemplate.Controllers
     [ApiController]
     [ProducesResponseType(typeof(IActionResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(IActionResult), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(IActionResult), StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(typeof(IActionResult), StatusCodes.Status500InternalServerError)]
     public class AuthController : ControllerBase
     {
