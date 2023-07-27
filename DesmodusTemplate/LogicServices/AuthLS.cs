@@ -35,7 +35,8 @@ namespace DesmodusTemplate.LogicServices
             entidad.Salt = passwordSalt;
             context.Add(entidad);
             await context.SaveChangesAsync();
-            return new ObjectResult("Registrado correctamente.") { StatusCode = StatusCodes.Status200OK };
+            //return new ObjectResult("Registrado correctamente.") { StatusCode = StatusCodes.Status200OK };
+            return Responses.Ok("Registrado correctamente.");
         }
         public async Task<ObjectResult> login(UsuarioLoginDto data)
         {
@@ -44,15 +45,16 @@ namespace DesmodusTemplate.LogicServices
                 .Include(x => x.IdRolNavigation)
                 .FirstOrDefaultAsync(x => x.Correo == data.Correo);
             if (entidad == null)
-                return new ObjectResult("Usuario no encontrado.") { StatusCode = StatusCodes.Status400BadRequest };
+                //return new ObjectResult("Usuario no encontrado.") { StatusCode = StatusCodes.Status400BadRequest };
+                return Responses.Error400("Usuario no encontrado.");
             else
             {
-                if(VerifyPassword(data.Clave, entidad.Clave, entidad.Salt))
+                if (VerifyPassword(data.Clave, entidad.Clave, entidad.Salt))
                 {
-                    return new OkObjectResult(CreateToken(entidad));
+                    return Responses.Get(CreateToken(entidad));
                 }
                 else
-                    return new ObjectResult("Contraseña incorrecta.") { StatusCode = StatusCodes.Status400BadRequest };
+                    return Responses.Error400("Contraseña incorrecta.") ;
             }
         }
         private bool VerifyPassword(string enteredPassword, string storedPasswordHash, string storedPasswordSalt)

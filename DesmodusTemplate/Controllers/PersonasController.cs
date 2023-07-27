@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DesmodusTemplate.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController] //Validaciones automaticas respecto a los datos recividos
     [ProducesResponseType(typeof(ActionResult), StatusCodes.Status400BadRequest)]
@@ -17,7 +17,8 @@ namespace DesmodusTemplate.Controllers
     {
         private readonly PersonaLS personaLS;
 
-        public PersonasController(PersonaLS personaLS) {
+        public PersonasController(PersonaLS personaLS)
+        {
             this.personaLS = personaLS;
         }
         [HttpGet]
@@ -27,21 +28,12 @@ namespace DesmodusTemplate.Controllers
         {
             try
             {
-                var data = await personaLS.GetListPersonas();
-
-                if (data == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(data);
-                }
+                return await personaLS.GetListPersonas();
 
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return Responses.Error500(ex.Message);
             }
         }
         [HttpGet("GetMe")]
@@ -50,21 +42,13 @@ namespace DesmodusTemplate.Controllers
         {
             try
             {
-                var data = await  personaLS.GetMe();
 
-                if (data == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(data);
-                }
+                return await personaLS.GetMe();
 
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return Responses.Error500(ex.Message);
             }
         }
     }

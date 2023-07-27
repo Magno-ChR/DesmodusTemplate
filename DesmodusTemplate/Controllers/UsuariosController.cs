@@ -29,21 +29,12 @@ namespace DesmodusTemplate.Controllers
         {
             try
             {
-                var data = await usuarioLS.GetListLoginUsuarios();
-
-                if (data == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    return Ok(data);
-                }
+                return await usuarioLS.GetListLoginUsuarios();
 
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);
+                return Responses.Error500(ex.Message);
             }
         }
     }

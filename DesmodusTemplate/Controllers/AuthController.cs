@@ -28,7 +28,7 @@ namespace DesmodusTemplate.Controllers
         /// Registra de datos de acceso para una persona
         /// </summary>
         /// <param name="data">Un objeto del tipo UsuarioEditDto con los datos del usuario</param>
-        /// <returns>Retorna un objeto del tipo UsuarioEditDto</returns>
+        /// <returns>Retorna un objeto del tipo ResponseDto</returns>
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UsuarioEditDto data)
         {
@@ -38,7 +38,7 @@ namespace DesmodusTemplate.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return Responses.Error500(ex.Message);
             }
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace DesmodusTemplate.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return Responses.Error500(ex.Message);
             }
         }
 

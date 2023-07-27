@@ -95,7 +95,7 @@ builder.Services.AddConfLS();
 var app = builder.Build();
 
 //MIDDLEWARES
-app.UseMiddleware<CustomMessageHandling>();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DesmodusTemplate.Data;
 using DesmodusTemplate.DTOs;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DesmodusTemplate.LogicServices
@@ -18,18 +19,22 @@ namespace DesmodusTemplate.LogicServices
             this.user = user;
         }
 
-        public async Task<List<PersonaDto>> GetListPersonas()
+        public async Task<ObjectResult> GetListPersonas()
         {
             var data = await context.Persona.ToListAsync();
+            if (data == null)
+                return Responses.Error404();
           
-            return mapper.Map<List<PersonaDto>>(data);
+            return Responses.Get(mapper.Map<List<PersonaDto>>(data));
         }
-        public async Task<PersonaDto> GetMe()
+        public async Task<ObjectResult> GetMe()
         {
             var claims = user.JWTClaims();
             var data = await context.Persona.FirstOrDefaultAsync(x => x.NroDocumento == claims.Documento);
+            if (data == null)
+                return Responses.Error404();
 
-            return mapper.Map<PersonaDto>(data);
+            return Responses.Get(mapper.Map<PersonaDto>(data));
 
         }
     }
