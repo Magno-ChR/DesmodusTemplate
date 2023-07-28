@@ -8,10 +8,10 @@ namespace DesmodusTemplate.Controllers
 
     [Route("api/[controller]")]
     [ApiController] //Validaciones automaticas respecto a los datos recividos
-    [ProducesResponseType(typeof(ActionResult), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ActionResult), StatusCodes.Status500InternalServerError)]
-    [ProducesResponseType(typeof(ActionResult), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(ActionResult), StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(typeof(Respuesta<string>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(Respuesta<string>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(Respuesta<string>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(Respuesta<string>), StatusCodes.Status500InternalServerError)]
     [Authorize]
     public class PersonasController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace DesmodusTemplate.Controllers
         }
         [HttpGet]
         //[AllowAnonymous]
-        [ProducesResponseType(typeof(List<PersonaDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Respuesta<List<PersonaDto>>), StatusCodes.Status200OK)]
         public async Task<ActionResult<List<PersonaDto>>> GetListPersonas()
         {
             try
@@ -37,7 +37,7 @@ namespace DesmodusTemplate.Controllers
             }
         }
         [HttpGet("GetMe")]
-        [ProducesResponseType(typeof(PersonaDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Respuesta<PersonaDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<PersonaDto>> GetMe()
         {
             try

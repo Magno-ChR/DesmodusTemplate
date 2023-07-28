@@ -13,10 +13,10 @@ namespace DesmodusTemplate.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ProducesResponseType(typeof(IActionResult), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(IActionResult), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(IActionResult), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(IActionResult), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(Respuesta<string>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(Respuesta<string>), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(Respuesta<string>), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(Respuesta<string>), StatusCodes.Status500InternalServerError)]
     public class AuthController : ControllerBase
     {
         private readonly AuthLS authLS;
